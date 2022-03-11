@@ -90,37 +90,3 @@ function hit() {
     document.getElementById('sr').innerHTML = txy + "/" + (Math.sqrt(tx2 * ty2));
     document.getElementById('r').innerHTML = txy / (Math.sqrt(tx2 * ty2));
 }
-
-
-
-
-var fact = 1;
-
-function factorial(x) {
-    if (x == 0) {
-        return 1;
-    } else {
-        for (var i = 1; i <= x; i++) {
-            fact = fact * i;
-        }
-        return fact;
-    }
-}
-
-function poisson() {
-    const m = document.getElementById("rata").value
-    const x = document.getElementById("peluang").value
-    var hasil = document.getElementById("hasil")
-
-    var p;
-    fact = factorial(x)
-
-    // Masuk rumus
-    p = (Math.pow(e, -(m)) * Math.pow(m, x)) / fact;
-
-    hasil.value = p;
-
-    // console.log("m=" + m)
-    // console.log("peluang yang didapat = " + p)
-
-}
