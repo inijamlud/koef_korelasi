@@ -4,73 +4,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program Poisson</title>
+    <title>Koefisien Korelasi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script.js"></script>
 </head>
 
-<body class="h-screen bg-gradient-to-r from-blue-500 to-sky-700 flex">
-    <div class="w-2/3 items-center m-auto">
-        <div class="bg-white rounded-lg px-10 py-12 shadow-xl">
-            <div class="flex space-x-3 items-center">
-                <span class="inline-flex items-center justify-center p-2 bg-blue-500 rounded-md shadow-lg w-8 h-8">
-                </span>
-                <h1 class="text-2xl text-slate-800 font-sans font-semibold uppercase">Program
-                    Perhitungan Poisson</h1>
-            </div>
-            <p class="text-slate-700 leading-6 mt-2 text-lg">
-                Program Perhitungan poisson pada peluang kota yang terdampak gempa
-            </p>
-            <div class="hidden sm:block" aria-hidden="true">
-                <div class="py-5">
-                    <div class="border-t border-slate-200"></div>
-                </div>
-            </div>
-            <div class="desc">
-                <h2 class="text-lg text-slate-800 font-semibold">Distribusi Poisson</h2>
-                <p class="text-slate-500 text-sm">Program ini menggunakan perhitungan distribusi Poisson yaang merupakan
-                    distribusi probabilitas diskret yang menyatakan peluang jumlah peristiwa yang terjadi pada periode
-                    waktu tertentu apabila rata-rata kejadian tersebut diketahui dan dalam waktu saling bebas.</p>
-            </div>
-            <div class="grid grid-cols-3 gap-4 my-2 mt-6">
-                <div class="items-center bg-slate-50 rounded-lg shadow-md shadow-slate-300/70 px-8 py-4"><img src="./rumus.png" alt="" class="img-cover" /></div>
-                <div class="w-full col-span-2 bg-slate-50 rounded-lg shadow-md shadow-slate-300/70 px-8 py-4">
-                    <p class="font-semibold">Keterangan</p>
-                    <ul class="list-disc">
-                        <li>e adalah basis logaritma natural (e = 2.71828...)</li>
-                        <li>k adalah jumlah kejadian suatu peristiwa — peluang yang diberikan oleh fungsi ini</li>
+<body class="p-0 md:p-32 bg-gray-100">
 
-                        <li>k! adalah faktorial dari k</li>
-
-                        <li>λ adalah bilangan riil positif, sama dengan nilai harapan peristiwa yang terjadi dalam
-                            interval tertentu. </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="hidden sm:block" aria-hidden="true">
-                <div class="py-5">
-                    <div class="border-t border-slate-200"></div>
-                </div>
-            </div>
-            <p class="font-semibold mb-4">Menghitung peluang kota yang terdampak gempa</p>
-            <div class="grid grid-cols-4 gap-6 content-end">
-                    <div class="form-group">
-                        <label for="rata" class="block text-sm font-medium text-gray-700">Rata-rata kota</label>
-                        <input type="text" name="rata" id="rata" class="mt-1 p-3 focus:ring-indigo-500 border border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+    <div class="container">
+        <div class="mt-10 sm:mt-0">
+            <div class="md:grid md:grid-cols-3 md:gap-6">
+                <div class="md:col-span-1">
+                    <div class="px-4 sm:px-0">
+                        <h2 class="text-2xl font-medium leading-6 text-gray-900">Koefisien Korelasi</h2>
+                        <p class="mt-1 text-sm text-gray-600">Menghitung kuantifikasi arah dan kekuatan hubungan</p>
                     </div>
-                <div class="form-group">
-                        <label for="peluang" class="block text-sm font-medium text-gray-700">Peluang kota yang dicari</label>
-                        <input type="text" name="peluang" id="peluang" class="mt-1 p-3 focus:ring-indigo-500 border border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                 </div>
-                <div class="button">
-                    <button onclick="poisson()" type="submit" class="p-6 px-12 w-full bg-blue-500 text-white font-semibold rounded-lg">Hitung</button>
+                <div class="mt-5 md:mt-0 md:col-span-2">
+                    <!-- <form method="POST"> -->
+                    <div class="shadow overflow-hidden sm:rounded-lg">
+                        <div class="px-4 py-5 bg-white sm:p-6">
+                            <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-3" id="fjml">
+                                    <label for="jml_data" class="block text-sm font-medium text-gray-700">Masukan
+                                        Jumlah Data</label>
+                                    <input type="text" name="jml_data" id="jml_data"
+                                        class="p-2 mt-2 rounded border block w-full focus:ring-2 ring-offset-2 focus:ring-gray-400  border-gray-400 rounded-md shadow-sm">
+                                    <button type="submit" onclick="jml()" id="btn"
+                                        class="inline-flex justify-center mt-3 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Tambah</button>
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3" id="fadd_x" style="display: none;">
+                                    <label for="email-address" class="block text-sm font-medium text-gray-700">Nilai
+                                        x</label>
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-3" id="fadd_y" style="display: none;">
+                                    <label for="email-address" class="block text-sm font-medium text-gray-700">Nilai
+                                        y</label>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="px-4 py-3 bg-gray-50 text-right sm:px-6" id="btn_hit" style="display: none;">
+                            <button type="submit" onclick="hit()" id="btn"
+                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Hitung</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                        <label for="hasil" class="block text-sm font-medium text-gray-700">Hasil</label>
-                        <input type="text" name="hasil" id="hasil" value="0" readonly class="mt-1 p-3 focus:ring-indigo-500 border border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+
+                <!-- </form> -->
+                <div class="md:grid md:grid-cols-3 md:gap-6">
+                    <div class="mt-5 md:mt-0 md:col-span-3">
+                        <div class="mt-8 p-4 md:p-0" id="table" style="display: none;">
+                            <table class="w-full border-collapse border border-gray-400 table-auto">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-gray-200 border border-gray-300 p-3">x</th>
+                                        <th class="bg-gray-200 border border-gray-300 p-3">y</th>
+                                        <th class="bg-gray-200 border border-gray-300 p-3">X</th>
+                                        <th class="bg-gray-200 border border-gray-300 p-3">Y</th>
+                                        <th class="bg-gray-200 border border-gray-300 p-3">xy</th>
+                                        <th class="bg-gray-200 border border-gray-300 p-3">X<sup>2</sup></th>
+                                        <th class="bg-gray-200 border border-gray-300 p-3">Y<sup>2</sup></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="body">
+                                </tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-3" colspan="5">Rata-Rata</td>
+                                    <td class="border border-gray-300 p-3" id="x">X = </td>
+                                    <td class="border border-gray-300 p-3" id="y">Y = </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-3" colspan="4">TOTAL</td>
+                                    <td class="border border-gray-300 p-3" id="txy">${a_ny[i]}</td>
+                                    <td class="border border-gray-300 p-3" id="tx2">${X[i]}</td>
+                                    <td class="border border-gray-300 p-3" id="ty2">${Y[i]}</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-3" colspan="5">Korelasi (r)</td>
+                                    <td class="border border-gray-300 p-3" id="sr"></td>
+                                    <td class="border bg-yellow-200 border-gray-300 p-3 font-bold" id="r"></td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 
